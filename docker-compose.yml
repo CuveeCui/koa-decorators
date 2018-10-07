@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    image: mongo:3.4.2
+    ports:
+      - "27018:27017"
+  web:
+    build: .
+    volumes:
+      - .:/usr/xigua_front/
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    stdin_open: true
+    tty: true
